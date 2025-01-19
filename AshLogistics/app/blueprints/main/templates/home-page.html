@@ -1,0 +1,239 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome to Ash Logistics{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='css/admin-style.css') }}">
+
+
+<!-- Tracking Section -->
+<section class="tracking-section py-5">
+    <div class="container text-center">
+        <h2 class="mb-4">Track Your Shipment</h2>
+        <form action="{{ url_for('tracking.track') }}" method="get">
+            <div class="d-flex justify-content-center align-items-center">
+                <input type="text" name="tracking_number" class="form-control tracking-input me-2" placeholder="Enter Tracking Number">
+                <!-- Updated Button with color and text "Track" -->
+                <button type="submit" class="btn tracking-button">Track</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+
+<!-- Carousel Section -->
+<section class="first-homepage-carousel">
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ url_for('admin.static', filename='images/cargos.jpg') }}" class="d-block w-100 carousel-img" alt="Cargo Transport">
+                <div class="carousel-caption">
+                    <h5>Efficient Cargo Transport</h5>
+                    <p>Fast and secure cargo transportation worldwide</p>
+                    <a href="{{ url_for('shipping.quote') }}" class="btn btn-primary">Get a Quote</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{ url_for('admin.static', filename='images/ships.jpg') }}" class="d-block w-100 carousel-img" alt="Ship Transport">
+                <div class="carousel-caption">
+                    <h5>Global Shipping</h5>
+                    <p>Reliable and secure shipping across oceans</p>
+                    <a href="{{ url_for('shipping.quote') }}" class="btn btn-primary">Get a Quote</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{{ url_for('admin.static', filename='images/truck.jpg') }}" class="d-block w-100 carousel-img" alt="Truck Transport">
+                <div class="carousel-caption">
+                    <h5>Reliable Road Freight</h5>
+                    <p>Safe and timely ground transport services</p>
+                    <a href="{{ url_for('shipping.quote') }}" class="btn btn-primary">Get a Quote</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="services-section">
+    <div class="container text-center">
+        <h2>Our Services</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="service-card">
+                    <img src="{{ url_for('admin.static', filename='images/cargos.jpg') }}" alt="Cargo Services">
+                    <h3>Cargo Services</h3>
+                    <p>Reliable and secure cargo transport across all modes of transport.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service-card">
+                    <img src="{{ url_for('admin.static', filename='images/ships.jpg') }}" alt="Ship Services">
+                    <h3>Ship Transport</h3>
+                    <p>Global shipping solutions with timely delivery and security.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service-card">
+                    <img src="{{ url_for('admin.static', filename='images/truck.jpg') }}" alt="Truck Services">
+                    <h3>Ground Freight</h3>
+                    <p>Fast, reliable truck freight services to meet all your needs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Specialization Section -->
+<section class="specialization-section">
+    <div class="specialization-content d-flex">
+        <!-- Text Content -->
+        <div class="text-content">
+            <h2>Specialization Makes a Difference</h2>
+            <p>
+                At Ash Logistics, we understand that shipping precious minerals and valuable cargo requires expertise and care. 
+                As your trusted partner, we offer seamless and secure freight shipping services globally. 
+                Our specialized global focus allows us to deliver exceptional service with tailored solutions that prioritize 
+                the safety and timely delivery of your shipments.
+            </p>
+            <ul>
+                <li><strong>Precious Cargo Expertise:</strong> Our experience in handling delicate and high-value shipments ensures your precious minerals are transported with the utmost care.</li>
+                <li><strong>Tailored Shipping Solutions:</strong> Customized solutions to meet your specific needs and budget.</li>
+                <li><strong>Competitive Pricing, Uncompromising Quality:</strong> Get the best value for your shipments with excellent service.</li>
+            </ul>
+            <a href="{{ url_for('support.about') }}" class="link-to-about">Know more about Ash Logistics &gt;</a>
+        </div>
+
+        <!-- Image Content -->
+        <div class="image-content">
+            <img src="{{ url_for('admin.static', filename='images/special.jpg') }}" alt="Specialization Image">
+        </div>
+    </div>
+</section>
+
+
+<!-- Ash Logistics Advantage Section -->
+<section class="advantage-section">
+    <h2>The Ash <span>Logistics</span> Advantage</h2>
+    <p>Experience specialized shipping for precious minerals and critical shipments!</p>
+    <div class="advantage-features">
+        <div class="feature">
+            <img src="{{ url_for('admin.static', filename='images/secure.png') }}" alt="Secure">
+            <h3>🚀 Secure</h3>
+            <p>Highest level of protection...</p>
+        </div>
+        <div class="feature">
+            <img src="{{ url_for('admin.static', filename='images/solution.png') }}" alt="Tailored Solutions">
+            <h3>💡 Tailored Solutions</h3>
+            <p>Every shipment is unique...</p>
+        </div>
+        <div class="feature">
+            <img src="{{ url_for('admin.static', filename='images/reliable.png') }}" alt="Reliable">
+            <h3>🤝 Reliable</h3>
+            <p>Expertise and strong network...</p>
+        </div>
+        <div class="feature">
+            <img src="{{ url_for('admin.static', filename='images/fast.png') }}" alt="Fast">
+            <h3>⚡ Fast & Efficient</h3>
+            <p>Time is valuable...</p>
+        </div>
+    </div>
+</section>
+
+<!-- Experience Section -->
+<section class="experience-section">
+    <h2>Our experience by the numbers</h2>
+    <div class="stats">
+        <div>
+            <span>29</span>
+            <p>Years of Expertise</p>
+        </div>
+        <div>
+            <span>55k+</span>
+            <p>Successful Shipments</p>
+        </div>
+        <div>
+            <span>900+</span>
+            <p>Satisfied Clients</p>
+        </div>
+        <div>
+            <span><img src="{{ url_for('admin.static', filename='images/star.png') }}" alt="Star"></span>
+            <p>Rated on Google</p>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Reviews Section -->
+<section class="reviews-section">
+    <h2>Don't just take our word for it</h2>
+    <p>Learn from our customers</p>
+    <div class="reviews-carousel">
+        <div class="review-card">
+            <div class="review-header">
+                <img src="{{ url_for('admin.static', filename='images/customer1.jpg') }}" alt="Customer 1" class="review-avatar">
+                <div class="review-info">
+                    <h4 class="reviewer-name">John Doe</h4>
+                    <div class="review-rating">
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9734;</span>
+                    </div>
+                </div>
+            </div>
+            <p class="review-text">"Ash Logistics has provided excellent service! My shipment arrived on time and in perfect condition. Highly recommended!"</p>
+        </div>
+        
+        <div class="review-card">
+            <div class="review-header">
+                <img src="{{ url_for('admin.static', filename='images/customer2.jpg') }}" alt="Customer 2" class="review-avatar">
+                <div class="review-info">
+                    <h4 class="reviewer-name">Jane Smith</h4>
+                    <div class="review-rating">
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                    </div>
+                </div>
+            </div>
+            <p class="review-text">"Fantastic customer service and prompt delivery. I was kept updated at every stage of my shipment. Would definitely use again!"</p>
+        </div>
+
+        <div class="review-card">
+            <div class="review-header">
+                <img src="{{ url_for('admin.static', filename='images/customer3.jpg') }}" alt="Customer 3" class="review-avatar">
+                <div class="review-info">
+                    <h4 class="reviewer-name">Samuel Lee</h4>
+                    <div class="review-rating">
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                    </div>
+                </div>
+            </div>
+            <p class="review-text">"I have been using Ash Logistics for my business shipments, and they never disappoint. Quick, efficient, and reliable!"</p>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Sponsors Section -->
+<section class="sponsors-section">
+    <h2>Proud member of industry associations</h2>
+    <div class="sponsors-logos">
+        <img src="{{ url_for('admin.static', filename='images/daf.png') }}" alt="DAF">
+        <img src="{{ url_for('admin.static', filename='images/emoj.png') }}" alt="EMOJ">
+        <img src="{{ url_for('admin.static', filename='images/kw.png') }}" alt="KW">
+        <img src="{{ url_for('admin.static', filename='images/rainbow.png') }}" alt="Rainbow">
+        <img src="{{ url_for('admin.static', filename='images/tesco.png') }}" alt="Tesco">
+    </div>
+</section>
+
+{% endblock %}

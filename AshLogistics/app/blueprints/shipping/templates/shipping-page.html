@@ -1,0 +1,43 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <!-- Big Search Bar for Tracking -->
+    <div class="input-group mb-4">
+        <input type="text" class="form-control tracking-input" placeholder="Enter tracking number">
+        <button class="btn btn-light-red tracking-button" type="button" onclick="location.href='{{ url_for('tracking.track_package') }}'">Track</button>
+    </div>
+
+    <div class="jumbotron bg-light p-5 rounded shadow-sm">
+        <h1 class="display-4">Welcome to Ash Logistics</h1>
+        <p class="lead">We provide reliable and efficient shipping services.</p>
+        <!-- Update Get a Quote link -->
+        <a href="{{ url_for('shipping.quote') }}" class="btn btn-aquamarine">Get a Quote</a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Specialization Makes a Difference</h5>
+                    <p class="card-text">At AshLogistics, we specialize in top-notch shipping services. Our team ensures your packages are delivered on time and in perfect condition.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Track Your Package</h5>
+                    <p class="card-text">Enter your tracking number to check the status of your package.</p>
+                    <form method="POST" action="{{ url_for('tracking.track_package') }}">
+                        <input type="text" class="form-control tracking-input mb-2" placeholder="Enter tracking number">
+                        <button type="submit" class="btn btn-light-red tracking-button">Track</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

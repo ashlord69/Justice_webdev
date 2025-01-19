@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Ash Logistics{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Conditionally load the homepage styles -->
+    {% block extra_css %}
+    <!-- This block will be populated in specific templates like home-page.html to load main-style.css -->
+    <link rel="stylesheet" href="{{ url_for('main.static', filename='css/main-style.css') }}">
+    {% endblock %}
+
+    <link rel="stylesheet" href="{{ url_for('admin.static', filename='css/admin-style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <header class="bg-light py-2">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="{{ url_for('main.homepage') }}">
+                <img src="{{ url_for('admin.static', filename='images/logo.png') }}" alt="Ash Logistics" class="logo">
+            </a>
+            <div class="flex-grow-1 d-flex justify-content-center">
+                <form class="d-flex search-form">
+                    <input class="form-control search-bar" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn" type="submit">
+                        <img src="{{ url_for('admin.static', filename='images/search.png') }}" alt="Search" class="search-icon">
+                    </button>
+                </form>
+            </div>
+            <a href="{{ url_for('user.login') }}">
+                <img src="{{ url_for('admin.static', filename='images/login.png') }}" alt="Login" class="login-icon">
+            </a>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light-green">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('main.homepage') }}">Ash Logistics</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('support.customer_service') }}">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('shipping.quote') }}">Get a Quote</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Ship To</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+<div class="footer">
+    <div class="footer-section footer-about">
+        <h3>About Ash Logistics</h3>
+        <p>
+            Ash Logistics is a global shipping and logistics company specializing in the secure transportation of 
+            precious minerals and high-value shipments. With over a decade of experience, we offer reliable solutions 
+            for ground, ocean, and air transportation. Our commitment to excellence ensures seamless shipping 
+            experiences for clients worldwide. We proudly support exporters and importers with tailored logistics 
+            solutions.
+        </p>
+    </div>
+    <div class="footer-section footer-solutions">
+        <h3>Our Solutions</h3>
+        <ul>
+            <li>&gt; Ground Freight</li>
+            <li>&gt; Ocean Freight</li>
+            <li>&gt; Air Freight</li>
+            <li>&gt; Specialized Precious Cargo</li>
+            <li>&gt; Custom Logistics Solutions</li>
+        </ul>
+    </div>
+    <div class="footer-section footer-contact">
+        <h3>Contact Us</h3>
+        <a href="{{ url_for('shipping.quote') }}" class="btn-footer btn-quote">Request a Quote</a>
+        <a href="{{ url_for('support.customer_service') }}" class="btn-footer btn-email">Send Us an Email</a>
+        <h3>Connect with Us</h3>
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank"><img src="{{ url_for('admin.static', filename='images/facebook.png') }}" alt="Facebook"></a>
+            <a href="https://instagram.com" target="_blank"><img src="{{ url_for('admin.static', filename='images/instagram.png') }}" alt="Instagram"></a>
+            <a href="https://linkedin.com" target="_blank"><img src="{{ url_for('admin.static', filename='images/linkedin.png') }}" alt="LinkedIn"></a>
+            <a href="https://twitter.com" target="_blank"><img src="{{ url_for('admin.static', filename='images/x.png') }}" alt="Twitter"></a>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Links Section with Same Background as Footer -->
+<div class="footer-links">
+    <a href="#">Terms of Use</a>
+    <a href="#">Sitemap</a>
+    <a href="#">Cookie Policy</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Shipping Terms & Conditions</a>
+</div>
+
+<!-- Legal Notice Section -->
+<div class="legal-notice">
+    <p>
+        Legal Notice<br>
+        Ash Logistics services are provided under industry-standard conditions. Full details are available in our terms & conditions. 
+        Retaining the services of Ash Logistics constitutes your acceptance of these terms.<br>
+        &copy; 2025 Ash Logistics. All Rights Reserved.
+    </p>
+</div>

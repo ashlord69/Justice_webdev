@@ -1,0 +1,666 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #eaf0e6;
+}
+
+/* Header Styles */
+header.bg-light {
+    background-color: #f78502f0 !important;
+}
+
+header {
+    background-color: orange;
+}
+
+header .logo {
+    border-radius: 50%;
+    object-fit: cover;
+    height: 70px;
+    width: 70px;
+}
+
+header .login-icon {
+    width: 30px;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .search-form {
+    flex-grow: 1;
+    margin: 0 15px;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #3ceb3c;
+}
+
+.navbar .navbar-nav .nav-item .nav-link {
+    font-weight: bold;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+.navbar .navbar-nav .nav-item .nav-link:hover {
+    color: #0066cc;
+}
+
+/* Ensure navbar text is visible at smaller resolutions */
+.navbar-collapse {
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-toggler {
+    border: none;
+    background-color: transparent;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 6h22M4 12h22M4 18h22'%3E%3C/path%3E%3C/svg%3E");
+}
+
+@media screen and (max-width: 768px) {
+    .navbar .navbar-nav .nav-link {
+        padding: 5px 10px;
+    }
+}
+
+
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: #333;  /* Light dark background color for footer */
+    color: rgb(251, 245, 245);
+    padding: 40px 0;
+}
+
+/* Ensure About Us, Solutions, and Contact are horizontally aligned */
+.footer .footer-section {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.footer .footer-about,
+.footer .footer-solutions,
+.footer .footer-contact {
+    flex: 1;
+    padding: 0 15px;
+    max-width: 30%; /* Ensures equal width for all sections */
+    margin-bottom: 20px;
+}
+
+/* "Our Solutions" List */
+.footer .footer-solutions ul {
+    list-style-type: none;
+    padding: 0;
+    color: green;
+}
+
+.footer .footer-solutions ul li {
+    padding: 5px 0;
+}
+
+/* Button Styling */
+.btn-footer {
+    padding: 10px 20px;
+    color: white;
+    border-radius: 50px; /* Round buttons */
+    text-decoration: none;
+    margin-bottom: 10px;
+    display: block;
+    width: 100%;  /* Make buttons full width under Contact Us */
+    text-align: center;
+    margin-top: 10px;  /* Add margin to space them out */
+    white-space: nowrap;
+}
+
+/* Blue button (Request a Quote) */
+.btn-footer.btn-quote {
+    background-color: #0066cc;
+}
+
+.btn-footer.btn-quote:hover {
+    background-color: #0056a0;
+}
+
+/* White button (Send Us an Email) */
+.btn-footer.btn-email {
+    background-color: white;
+    color: #333;
+}
+
+.btn-footer.btn-email:hover {
+    background-color: #f1f1f1;
+}
+
+/* Footer Links Section */
+.footer-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    background-color: #333;  /* Same background as the footer */
+    padding: 10px 15px;
+}
+
+.footer-links a {
+    color: #d1d1d1;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #333; /* Same as footer background */
+}
+
+.footer-links a:hover {
+    color: rgb(13, 13, 13);
+}
+
+
+
+/* Legal Notice */
+.legal-notice {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 20px;
+    color: #d1d1d1;
+    background-color: #333;  /* Black background for Legal Notice */
+    padding: 20px 0;
+}
+
+/* Terms and Legal Section */
+.footer-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 0 15px;
+}
+
+/* Footer Sections (About Us, Solutions, Contact) on Small Screens */
+@media screen and (max-width: 768px) {
+    .footer .footer-about,
+    .footer .footer-solutions,
+    .footer .footer-contact {
+        width: 100%; /* Make them stack vertically on small screens */
+        margin-bottom: 20px;
+    }
+
+    .footer .footer-solutions ul {
+        margin-top: 10px; /* Add space between 'Our Solutions' and the list */
+    }
+
+    .footer .social-icons {
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .footer .footer-links {
+        text-align: center;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Ensuring social icons are the same size */
+.social-icons img {
+    width: 30px;  /* Make sure all icons are the same size */
+    height: 30px;
+    object-fit: cover;
+}
+
+
+
+
+/* HOME PAGE STYLES  */
+
+
+/* Reset some basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and global styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+h2, h3, h5 {
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Section Styling */
+section {
+    margin-bottom: 50px;
+}
+
+/* Tracking Section */
+.tracking-section {
+    background-color: #ffffff;
+    padding: 50px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tracking-input {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.tracking-button {
+    padding: 10px 20px;
+    background-color: #1e90ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.tracking-button:hover {
+    background-color: #0056b3;
+}
+
+/* Carousel Section */
+.first-homepage-carousel {
+    margin-bottom: 30px;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.carousel-caption h5, .carousel-caption p {
+    color: #fff;
+}
+
+.carousel-caption a {
+    background-color: #1e90ff;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.carousel-caption a:hover {
+    background-color: #0056b3;
+}
+
+/* Services Section */
+.services-section {
+    text-align: center;
+    background-color: #f4f4f4;
+    padding: 50px 0;
+}
+
+.service-card {
+    background-color: #fff;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.service-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.service-card h3 {
+    margin-top: 15px;
+    font-size: 24px;
+    color: #333;
+}
+
+.service-card p {
+    color: #777;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+
+
+/* Specialization Section */
+.specialization-section {
+    padding: 50px 0;
+    background-color: #b3dd49; /* Light gray background for a clean look */
+    border-radius: 8px; /* Optional: rounded corners for a softer design */
+}
+
+.specialization-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px; /* Space between text and image */
+}
+
+.text-content {
+    flex: 1; /* Ensures text takes up half the available space */
+    max-width: 50%; /* Limits text width to 50% */
+}
+
+.text-content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.text-content p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.text-content ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.text-content ul li {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.link-to-about {
+    font-weight: bold;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.text-content .link-to-about:hover {
+    text-decoration: underline;
+}
+
+/* Image Section */
+.image-content {
+    flex: 1; /* Ensures the image also takes up half the available space */
+    max-width: 50%; /* Limits image width to 50% */
+}
+
+.image-content img {
+    width: 100%;
+    height: auto;
+    max-width: 100%; /* Ensures image fits within the container */
+    border-radius: 8px; /* Optional: adds rounded corners to the image */
+}
+
+@media (max-width: 768px) {
+    .specialization-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .text-content {
+        max-width: 100%;
+        margin-bottom: 20px; /* Adds space between text and image on small screens */
+    }
+
+    .image-content {
+        max-width: 100%;
+        margin-bottom: 20px; /* Adds space below the image when stacked */
+    }
+
+    .image-content img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+
+
+/* Ash Logistics Advantage Section */
+.advantage-section {
+    background-color: #29506d;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.advantage-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.advantage-features {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.feature {
+    background-color: #fff;
+    padding: 30px;
+    width: 22%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.feature img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.feature h3 {
+    font-size: 22px;
+    color: #333;
+}
+
+.feature p {
+    font-size: 16px;
+    color: #777;
+}
+
+/* Experience Section */
+.experience-section {
+    text-align: center;
+    padding: 50px 0;
+    background-color: #cb83e8;
+}
+
+.experience-section h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stats div {
+    text-align: center;
+}
+
+.stats span {
+    font-size: 50px;
+    color: #07f13e;
+    font-weight: bold;
+}
+
+.stats p {
+    font-size: 18px;
+    color: #fa0606;
+}
+
+
+
+
+/* Reviews Section */
+.reviews-section {
+    padding: 50px 0;
+    text-align: center;
+    background-color: #09eef2; /* Light background for contrast */
+}
+
+.reviews-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.reviews-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+/* Unique class for Reviews Carousel */
+.reviews-carousel {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+/* Review Card */
+.review-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+}
+
+.review-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.review-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.review-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.reviewer-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.review-rating {
+    color: #ffd700; /* Gold color for stars */
+}
+
+.star {
+    font-size: 1.1rem;
+}
+
+/* Review Text */
+.review-text {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .reviews-carousel {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .review-card {
+        width: 80%; /* Make cards take more width on small screens */
+        margin-bottom: 20px;
+    }
+}
+
+
+
+
+/* Sponsors Section */
+.sponsors-section {
+    padding: 50px 0;
+    text-align: center;
+    background-color: #edd606; /* White background to make logos stand out */
+    border-top: 2px solid #14f409; /* Light border on top for separation */
+}
+
+.sponsors-section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #000401e6;
+}
+
+.sponsors-logos {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.sponsors-logos img {
+    width: 120px; /* Set a fixed width for the logos */
+    height: auto;
+    max-width: 100%;
+    transition: transform 0.3s ease;
+    margin: 20px;
+}
+
+/* Hover effect for logos */
+.sponsors-logos img:hover {
+    transform: scale(1.1);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .sponsors-logos {
+        gap: 20px; /* Reduced gap on smaller screens */
+    }
+
+    .sponsors-logos img {
+        width: 100px; /* Smaller logos on mobile */
+    }
+}
