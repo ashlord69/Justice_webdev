@@ -1,32 +1,73 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-</head>
-<body>
-    <header>
-        <h1>Login to Your Account</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/track">Track Your Package</a></li>
-            <li><a href="/about">About Us</a></li>
-            <li><a href="/customer-service">Customer Service</a></li>
-            <li><a href="/shipping">Shipping</a></li>
-            <li><a href="/quote">Request a Quote</a></li>
-            <li><a href="/login">Login</a></li>
-        </ul>
-    </nav>
-    <main>
-        <form method="POST" action="/login">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <button type="submit">Login</button>
-        </form>
-    </main>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<link rel="stylesheet" href="{{ url_for('user.static', filename='css/user-style.css') }}">
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('user.static', filename='js/user-script.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="login-page"></div>    
+    <div class="login-container" id="login-container">
+        <div class="login-form-container sign-up">
+            <form>
+                <h1>Create Account</h1>
+                <div class="login-social-icons">
+                    <!-- Redirect to Google OAuth -->
+                    <a href="/auth/google" class="login-icon"><i class="fa-brands fa-google-plus-g"></i></a>
+
+                    <!-- Redirect to Facebook OAuth -->
+                    <a href="/auth/facebook" class="login-icon"><i class="fa-brands fa-facebook-f"></i></a>
+
+                    <!-- Redirect to GitHub OAuth -->
+                    <a href="/auth/github" class="login-icon"><i class="fa-brands fa-github"></i></a>
+
+                    <!-- Redirect to LinkedIn OAuth -->
+                    <a href="/auth/linkedin" class="login-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email for registeration</span>
+                <input type="text" class="login-input"  placeholder="Name">
+                <input type="email" class="login-input"  placeholder="Email">
+                <input type="password"  class="login-input" placeholder="Password">
+                <button>Sign Up</button>
+            </form>
+        </div>
+        <div class="login-form-container sign-in-form">
+            <form>
+                <h1>Sign In</h1>
+                <div class="social-icons">
+                    <a href="/auth/google" class="login-icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="/auth/facebook" class="login-icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="/auth/github" class="login-icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="/auth/linkedin" class="login-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email password</span>
+                <input type="email" placeholder="Email">
+                <input type="password" placeholder="Password">
+                <a href="#" class="login-forgot-password">Forget Your Password?</a>
+                <button class="login-btn">Sign In</button>
+            </form>
+        </div>
+        <div class="login-toggle-container">
+            <div class="login-toggle">
+                <div class="login-toggle-panel login-toggle-left">
+                    <h1>Welcome Back!</h1>
+                    <p>Enter your personal details to use all of site features</p>
+                    <button class="login-hidden-btn" id="login">Sign In</button>
+                </div>
+                <div class="login-toggle-panel login-toggle-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Register with your personal details to use all of site features</p>
+                    <button class="login-hidden-btn" id="register">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('user.static', filename='js/user-script.js') }}"></script>
+{% endblock %}

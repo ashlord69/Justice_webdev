@@ -1,0 +1,87 @@
+/* Hero Section Styles */
+.hero-section {
+    background-color: #D40511;
+    padding: 4rem 0;
+    margin-bottom: 2rem;
+}
+
+.display-4{
+    font-weight: 750;
+}
+
+.tracking-form {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+/* Navbar Customization */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand img {
+    height: 40px;
+}
+
+/* Shipment Card Styles */
+.shipment-card {
+    border-left: 4px solid #D40511;
+    margin-bottom: 1rem;
+    transition: transform 0.2s;
+}
+
+.shipment-card:hover {
+    transform: translateX(5px);
+}
+
+.status-badge {
+    font-size: 0.875rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+}
+
+.status-badge.in-transit {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+
+.status-badge.delivered {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.status-badge.pending {
+    background-color: #fff3e0;
+    color: #f57c00;
+}
+
+/* Footer Customization */
+footer {
+    margin-top: auto;
+}
+
+footer a {
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+footer a:hover {
+    color: #ffffff !important;
+}
+
+.social-icons a {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 2rem 0;
+    }
+    
+    .tracking-form {
+        padding: 1rem;
+    }
+}

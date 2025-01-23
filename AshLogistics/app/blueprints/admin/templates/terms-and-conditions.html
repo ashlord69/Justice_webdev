@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('admin.static', filename='css/terms-style.css') }}">
+{% endblock %}shipping
+
+{% block extra_js %}
+<script src="{{ url_for('admin.static', filename='js/terms-script.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mx-auto text-center">
+                    <h1 class="display-4 text-white mb-4">Terms and Conditions</h1>
+                    <p class="lead text-white">Last updated: January 23, 2025</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="sticky-top" style="top: 2rem;">
+                    <div class="nav-section">
+                        <h5 class="mb-3">Quick Navigation</h5>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#general">General Terms</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#shipping">Shipping Services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#liability">Liability</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#prohibited">Prohibited Items</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#customs">Customs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#privacy">Privacy & Data</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#payment">Payment Terms</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="terms-content">
+                    <section id="general" class="mb-5">
+                        <h2>1. General Terms</h2>
+                        <div class="card">
+                            <div class="card-body">
+                                <p>These terms and conditions ("Terms") govern the use of services provided by Ash Logistics International GmbH and its affiliates ("Ash Logistics", "we", "us", or "our"). By using our services, you agree to these Terms.</p>
+                                <p>Ash Logistics reserves the right to modify these Terms at any time. Changes will be effective immediately upon posting on our website. Your continued use of our services constitutes acceptance of any modifications.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="shipping" class="mb-5">
+                        <h2>2. Shipping Services</h2>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>2.1 Service Commitment</h5>
+                                <p>Ash Logistics will provide transportation and delivery services according to the selected service level. Delivery times are estimates and not guaranteed unless explicitly stated.</p>
+                                
+                                <h5>2.2 Packaging Requirements</h5>
+                                <p>Shipments must be packaged adequately to ensure safe transportation. DHL reserves the right to reject inadequately packaged items.</p>
+                                
+                                <h5>2.3 Size and Weight Limits</h5>
+                                <p>Maximum dimensions and weight vary by service type and destination. Oversized or overweight items may incur additional charges or be rejected.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="liability" class="mb-5">
+                        <h2>3. Liability</h2>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>3.1 Limitation of Liability</h5>
+                                <p>Ash Logistics's liability for loss or damage is limited to the lesser of:</p>
+                                <ul>
+                                    <li>The actual value of the shipment</li>
+                                    <li>100 USD per domestic shipment</li>
+                                    <li>The limits established by applicable international conventions</li>
+                                </ul>
+                                
+                                <h5>3.2 Claims Process</h5>
+                                <p>Claims must be submitted in writing within 30 days of delivery for damage, or 60 days from the date of acceptance for loss.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="prohibited" class="mb-5">
+                        <h2>4. Prohibited Items</h2>
+                        <div class="card">
+                            <div class="card-body">
+                                <p>The following items are prohibited from shipping:</p>
+                                <ul class="prohibited-items">
+                                    <li>Dangerous goods and hazardous materials</li>
+                                    <li>Illegal substances and contraband</li>
+                                    <li>Firearms and weapons</li>
+                                    <li>Live animals</li>
+                                    <li>Perishable goods (unless specifically arranged)</li>
+                                    <li>Currency and negotiable instruments</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="customs" class="mb-5">
+                        <h2>5. Customs Clearance</h2>
+                        <div class="card">
+                            <div class="card-body">
+                                <p>For international shipments:</p>
+                                <ul>
+                                    <li>Accurate customs documentation is required</li>
+                                    <li>Sender is responsible for duties and taxes</li>
+                                    <li>Ash Logistics may advance payments for clearance</li>
+                                    <li>Additional fees may apply for customs processing</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="privacy" class="mb-5">
+                        <h2>6. Privacy & Data Protection</h2>
+                        <div class="card">
+                            <div class="card-body">
+                                <p>Ash Logistics processes personal data in accordance with applicable data protection laws. See our Privacy Policy for details on:</p>
+                                <ul>
+                                    <li>Data collection and usage</li>
+                                    <li>Security measures</li>
+                                    <li>Your rights regarding personal data</li>
+                                    <li>Data retention periods</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="payment" class="mb-5">
+                        <h2>7. Payment Terms</h2>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>7.1 Rates and Charges</h5>
+                                <p>Shipping rates are determined by service type, weight, dimensions, and destination. Additional charges may apply for:</p>
+                                <ul>
+                                    <li>Fuel surcharges</li>
+                                    <li>Remote area delivery</li>
+                                    <li>Special handling</li>
+                                    <li>Insurance</li>
+                                </ul>
+
+                                <h5>7.2 Payment Methods</h5>
+                                <p>We accept major credit cards, bank transfers, and approved business accounts. Payment is required before or at the time of shipping unless credit terms have been established.</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('admin.static', filename='js/terms-script.js') }}"></script>
+{% endblock %}

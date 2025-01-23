@@ -1,0 +1,188 @@
+/* Hero Section Styles */
+.hero-section {
+    background-color: #D40511;
+    padding: 4rem 0;
+    margin-bottom: 2rem;
+}
+
+.display-4{
+    font-weight: 750;
+}
+
+
+
+/* Navbar Customization */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand img {
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Cookie Banner */
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(33, 37, 41, 0.95);
+    color: white;
+    padding: 1rem 0;
+    z-index: 1050;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+}
+
+/* Navigation Section */
+.nav-section {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.nav-section .nav-link {
+    color: #495057;
+    padding: 0.5rem 0;
+    transition: all 0.2s ease;
+}
+
+.nav-section .nav-link:hover {
+    color: #D40511;
+    padding-left: 0.5rem;
+}
+
+/* Policy Content Styling */
+.policy-content section {
+    scroll-margin-top: 2rem;
+}
+
+.policy-content h2 {
+    color: #D40511;
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+}
+
+.policy-content .card {
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-bottom: 1rem;
+}
+
+.policy-content h5 {
+    color: #212529;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.policy-content p {
+    color: #6c757d;
+    line-height: 1.6;
+}
+
+.policy-content ul {
+    padding-left: 1.2rem;
+}
+
+.policy-content ul li {
+    margin-bottom: 0.5rem;
+    color: #6c757d;
+}
+
+/* Cookie Types */
+.cookie-types {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.cookie-type {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.cookie-type h6 {
+    color: #D40511;
+    margin-bottom: 0.5rem;
+}
+
+.cookie-type p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+}
+
+/* Cookie Preferences Modal */
+.cookie-preferences .form-check {
+    padding: 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.cookie-preferences .form-check-label p {
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* Footer Customization */
+footer {
+    margin-top: auto;
+}
+
+footer a {
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+footer a:hover {
+    color: #ffffff !important;
+}
+
+.social-icons a {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 2rem 0;
+    }
+    
+    .nav-section {
+        margin-bottom: 2rem;
+    }
+    
+    .policy-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .cookie-banner {
+        text-align: center;
+    }
+
+    .cookie-banner .btn {
+        margin-top: 1rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .navbar, .nav-section, footer, .cookie-banner {
+        display: none;
+    }
+    
+    .policy-content {
+        font-size: 12pt;
+    }
+    
+    .policy-content h2 {
+        page-break-after: avoid;
+    }
+    
+    .card {
+        break-inside: avoid;
+    }
+}

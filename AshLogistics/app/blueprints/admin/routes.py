@@ -1,13 +1,12 @@
 from flask import render_template
 from . import admin_bp
 
-# Terms Page
+# Terms Page - This template will extend from 'base.html'
 @admin_bp.route("/terms")
 def terms():
-    return render_template("terms-and-conditions.html")  # Corrected template name
+    return render_template("terms-and-conditions.html")  # Will extend 'base.html'
 
-# Add more routes below as needed, e.g., if you have other admin routes
-# Example of another route using 'base.html'
-@admin_bp.route("/dashboard")
-def dashboard():
-    return render_template("dashboard.html")  # Make sure 'dashboard.html' is under 'templates'
+#Cookies and Policy Page
+@admin_bp.route("/policies")
+def policies():
+    return render_template("policies.html")  # Will extend 'base.html'

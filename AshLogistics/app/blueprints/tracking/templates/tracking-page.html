@@ -1,6 +1,47 @@
-<form action="{{ url_for('tracking.track') }}" method="get">
-    <div class="d-flex justify-content-center">
-        <input type="text" name="tracking_number" class="tracking-input" placeholder="Enter Tracking Number">
-        <button type="submit" class="tracking-button">Track</button>
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('tracking.static', filename='css/tracking-style.css') }}">
+
+{% endblock %}shipping
+
+{% block extra_js %}
+<script src="{{ url_for('tracking.static', filename='js/tracking-script.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+
+
+
+
+    <div class="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mx-auto text-center">
+                    <h1 class="display-4 text-white mb-4">Track Your Shipment</h1>
+                    <div class="tracking-form">
+                        <form id="trackingForm" class="d-flex gap-2">
+                            <input type="text" class="form-control form-control-lg" placeholder="Enter tracking number" id="trackingNumber">
+                            <button type="submit" class="btn btn-warning btn-lg">Track</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</form>
+
+    <div class="container my-5">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title mb-4">Recent Shipments</h2>
+                <div id="recentShipments">
+                    <!-- Recent shipments will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('tracking.static', filename='js/tracking-script.js') }}"></script>
+{% endblock %}

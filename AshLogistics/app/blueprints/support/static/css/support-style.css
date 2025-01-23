@@ -1,0 +1,113 @@
+/* Header Section */
+header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #e35e0b;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.home-btn img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.home-text {
+    margin-left: 10px;
+    font-size: 18px;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.home-text:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+/* Large Image for the customer service section */
+.position-relative {
+    position: relative;
+}
+
+.position-absolute {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: red;
+    color: white;
+    padding: 20px;
+    width: 80%;
+    max-width: 700px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Card styles */
+.card {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    margin-bottom: 30px; /* Ensures cards have space between them */
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-img-top {
+    height: 80px; /* Adjusted to make the images small */
+    object-fit: contain;
+}
+
+.card-body {
+    text-align: center;
+}
+
+/* Modal content styling */
+.modal-body {
+    text-align: center;
+}
+
+.modal-body input, .modal-body textarea {
+    width: 100%;
+}
+
+/* Responsive design for small screens */
+@media (max-width: 768px) {
+    .position-absolute {
+        width: 90%; /* Adjust red box size for smaller screens */
+    }
+
+    .position-relative img {
+        height: auto;
+        max-height: 400px; /* Limit the image height on small screens */
+    }
+
+    .card {
+        width: 100%;
+    }
+}
+
+/* Heading styles for smaller screens */
+h2.display-4 {
+    font-size: 2rem;
+}
+
+@media (max-width: 576px) {
+    h2.display-4 {
+        font-size: 1.5rem;
+    }
+}

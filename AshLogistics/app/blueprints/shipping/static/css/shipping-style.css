@@ -1,0 +1,130 @@
+/* Hero Section Styles */
+.hero-section {
+    background-color: #3068b1;
+    padding: 4rem 0;
+    margin-bottom: 2rem;
+}
+
+.display-4{
+    font-weight: 750;
+}
+
+/* Navbar Customization */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand img {
+    height: 40px;
+}
+
+/* Progress Steps */
+.progress-container {
+    position: relative;
+    padding: 0 40px;
+}
+
+.steps {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-top: -14px;
+}
+
+.step {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.step-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 2px solid #dee2e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-weight: bold;
+    color: #6c757d;
+    transition: all 0.3s ease;
+}
+
+.step.active .step-circle {
+    background-color: #D40511;
+    border-color: #D40511;
+    color: #fff;
+}
+
+.step.completed .step-circle {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: #fff;
+}
+
+.step-label {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+.step.active .step-label {
+    color: #D40511;
+    font-weight: 600;
+}
+
+/* Form Styling */
+.form-label {
+    font-weight: 500;
+    color: #495057;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #D40511;
+    box-shadow: 0 0 0 0.2rem rgba(212, 5, 17, 0.25);
+}
+
+/* Price Summary */
+#priceSummary {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+}
+
+/* Footer Customization */
+footer {
+    margin-top: auto;
+}
+
+footer a {
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+footer a:hover {
+    color: #ffffff !important;
+}
+
+.social-icons a {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 2rem 0;
+    }
+    
+    .step-label {
+        font-size: 0.75rem;
+    }
+    
+    .progress-container {
+        padding: 0 20px;
+    }
+}
+
+
+
