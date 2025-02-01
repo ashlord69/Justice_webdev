@@ -1,0 +1,112 @@
+/* Dashboard Layout */
+.dashboard-container {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar */
+.dashboard-nav {
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    height: 60px;
+    max-width: 100%;
+    overflow: hidden; 
+}
+
+
+/* Sidebar links */
+.dashboard-sidebar .nav-link {
+    color: #333;
+    padding: 0.75rem 1.25rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dashboard-sidebar .nav-link:hover {
+    background-color: #e9ecef;
+}
+
+.dashboard-sidebar .nav-link.active {
+    color: #0d6efd;
+    background-color: #e9ecef;
+}
+
+/* Main Content */
+.dashboard-main {
+    padding-top: 1.5rem;
+    padding-left: 250px; /* Add space for the sidebar */
+    margin-bottom: 60px; /* Prevent content from overlapping footer */
+}
+
+/* Stats Cards */
+.dashboard-stat-card {
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    transition: transform 0.2s ease;
+}
+
+.dashboard-stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.dashboard-stat-card .card-title {
+    color: #6c757d;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dashboard-stat-card .card-value {
+    color: #212529;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Table */
+.dashboard-table {
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.dashboard-table .table {
+    margin-bottom: 0;
+}
+
+.dashboard-table th {
+    font-weight: 600;
+    color: #495057;
+    background-color: #f8f9fa;
+    border-bottom-width: 1px;
+}
+
+.dashboard-table td {
+    vertical-align: middle;
+}
+
+/* Status Badges */
+.badge {
+    padding: 0.5em 0.75em;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .dashboard-sidebar {
+        position: static; /* Switch to static on smaller screens */
+        height: auto;
+        padding-top: 0;
+        width: 100%;
+    }
+    
+    .dashboard-main {
+        margin-left: 0;
+    }
+}

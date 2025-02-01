@@ -1,24 +1,48 @@
 document.addEventListener('DOMContentLoaded', function() {
     let currentStep = 1;
     const totalSteps = 4;
-    const form = document.getElementById('shipmentForm');
+    const form = document.getElementById('shippingForm');
     const nextBtn = document.getElementById('nextBtn');
     const prevBtn = document.getElementById('prevBtn');
     const progressBar = document.querySelector('.progress-bar');
 
-    // Shipping rate calculation (simulated)
-    const shippingRates = {
-        'express': { base: 50, perKg: 10 },
-        'economy': { base: 30, perKg: 7 },
-        'domestic': { base: 20, perKg: 5 }
-    };
+    // Load countries
+    loadCountries();
+
+    // Initialize form
+    updateProgress();
+    setupFormValidation();
+    setupPriceCalculation();
+
+    async function loadCountries() {
+        try {
+            const response = await fetch('https://restcountries.com/v3.1/all');
+            const countries = await response.json();
+            
+            const sortedCountries = countries
+                .map(country => ({
+                    code: country.cca2,
+                    name: country.name.common
+                }))
+                .sort((a, b) => a.name.localeCompare(b.name));
+
+            const countrySelects = document.querySelectorAll('select[name$="country"]');
+            const options = sortedCountries.map(country => 
+                `<option value="${country.code}">${country.name}</option>`
+            ).join('');
+
+            countrySelects.forEach(select => {
+                select.innerHTML = '<option value="">Select Country</option>' + options;
+            });
+        } catch (error) {
+            console.error('Error loading countries:', error);
+        }
+    }
 
     function updateProgress() {
-        // Update progress bar
         const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
         progressBar.style.width = `${progress}%`;
 
-        // Update step indicators
         document.querySelectorAll('.step').forEach((step, index) => {
             if (index + 1 < currentStep) {
                 step.classList.add('completed');
@@ -32,67 +56,167 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Show/hide steps
-        for (let i = 1; i <= totalSteps; i++) {
-            const stepElement = document.getElementById(`step${i}`);
-            if (stepElement) {
-                stepElement.style.display = i === currentStep ? 'block' : 'none';
-            }
-        }
+        document.querySelectorAll('.step-content').forEach((step, index) => {
+            step.style.display = index + 1 === currentStep ? 'block' : 'none';
+        });
 
-        // Update buttons
         prevBtn.style.display = currentStep === 1 ? 'none' : 'block';
         nextBtn.textContent = currentStep === totalSteps ? 'Submit' : 'Next';
     }
 
     function validateStep(step) {
         const currentStepElement = document.getElementById(`step${step}`);
-        const inputs = currentStepElement.querySelectorAll('input[required], select[required], textarea[required]');
+        const requiredFields = currentStepElement.querySelectorAll('[required]');
         let isValid = true;
 
-        inputs.forEach(input => {
-            if (!input.value) {
+        requiredFields.forEach(field => {
+            if (!field.value) {
                 isValid = false;
-                input.classList.add('is-invalid');
+                field.classList.add('is-invalid');
             } else {
-                input.classList.remove('is-invalid');
+                field.classList.remove('is-invalid');
             }
         });
 
         return isValid;
     }
 
-    function calculateShippingCost() {
-        const serviceType = document.querySelector('[name="serviceType"]').value;
-        const weight = parseFloat(document.querySelector('[name="weight"]').value) || 0;
-        const insurance = document.querySelector('[name="insurance"]').checked;
-        const signature = document.querySelector('[name="signature"]').checked;
-
-        const rate = shippingRates[serviceType];
-        const shippingCost = rate.base + (weight * rate.perKg);
-        const insuranceCost = insurance ? (shippingCost * 0.1) : 0;
-        const signatureCost = signature ? 5 : 0;
-        const totalCost = shippingCost + insuranceCost + signatureCost;
-
-        document.getElementById('shippingCost').textContent = `$${shippingCost.toFixed(2)}`;
-        document.getElementById('insuranceCost').textContent = `$${insuranceCost.toFixed(2)}`;
-        document.getElementById('additionalCost').textContent = `$${signatureCost.toFixed(2)}`;
-        document.getElementById('totalCost').textContent = `$${totalCost.toFixed(2)}`;
+    function setupFormValidation() {
+        form.addEventListener('input', function(e) {
+            if (e.target.hasAttribute('required')) {
+                if (e.target.value) {
+                    e.target.classList.remove('is-invalid');
+                }
+            }
+        });
     }
 
-    nextBtn.addEventListener('click', function() {
-        if (!validateStep(currentStep)) {
-            return;
-        }
+    function setupPriceCalculation() {
+        const priceInputs = document.querySelectorAll('input[name="weight"], select[name="service_type"], input[name="insurance"], input[name="signature"]');
+        
+        priceInputs.forEach(input => {
+            input.addEventListener('change', calculatePrice);
+        });
+    }
 
+    function calculatePrice() {
+        const serviceType = document.querySelector('select[name="service_type"]').value;
+        const weight = parseFloat(document.querySelector('input[name="weight"]').value) || 0;
+        const insurance = document.querySelector('input[name="insurance"]').checked;
+        const signature = document.querySelector('input[name="signature"]').checked;
+        
+        const rates = {
+            'express': { base: 50, perKg: 10 },
+            'priority': { base: 35, perKg: 8 },
+            'economy': { base: 25, perKg: 5 }
+        };
+
+        if (!serviceType) return;
+
+        const rate = rates[serviceType];
+        const baseShipping = rate.base + (weight * rate.perKg);
+        const insuranceCost = insurance ? (parseFloat(document.querySelector('input[name="declared_value"]').value) * 0.01) : 0;
+        const signatureCost = signature ? 5 : 0;
+        const total = baseShipping + insuranceCost + signatureCost;
+
+        document.getElementById('baseShipping').textContent = `$${baseShipping.toFixed(2)}`;
+        document.getElementById('insuranceCost').textContent = `$${insuranceCost.toFixed(2)}`;
+        document.getElementById('additionalCost').textContent = `$${signatureCost.toFixed(2)}`;
+        document.getElementById('totalCost').textContent = `$${total.toFixed(2)}`;
+        
+        document.querySelector('input[name="total_cost"]').value = total;
+    }
+
+    async function handleSubmission() {
+        if (!validateStep(currentStep)) return;
+
+        nextBtn.disabled = true;
+        nextBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Processing...';
+
+        try {
+            const formData = new FormData(form);
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                showSuccessModal(result.tracking_number);
+            } else {
+                throw new Error(result.message || 'Failed to create shipment');
+            }
+        } catch (error) {
+            showErrorAlert(error.message);
+        } finally {
+            nextBtn.disabled = false;
+            nextBtn.textContent = 'Submit';
+        }
+    }
+
+    function showSuccessModal(trackingNumber) {
+        const modalHtml = `
+            <div class="modal fade" id="successModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Shipment Created Successfully</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <div class="text-success mb-4">
+                                <svg width="64" height="64" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                            </div>
+                            <h4 class="mb-3">Thank You!</h4>
+                            <p class="mb-4">Your shipment has been created successfully.</p>
+                            <div class="alert alert-info">
+                                <strong>Tracking Number:</strong><br>
+                                <span class="fs-5">${trackingNumber}</span>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="/tracking/${trackingNumber}" class="btn btn-primary">Track Shipment</a>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        document.body.insertAdjacentHTML('beforeend', modalHtml);
+        const modal = new bootstrap.Modal(document.getElementById('successModal'));
+        modal.show();
+
+        document.getElementById('successModal').addEventListener('hidden.bs.modal', function() {
+            this.remove();
+            window.location.href = '/dashboard';
+        });
+    }
+
+    function showErrorAlert(message) {
+        const alert = document.createElement('div');
+        alert.className = 'alert alert-danger alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3';
+        alert.innerHTML = `
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        `;
+        document.body.appendChild(alert);
+        setTimeout(() => alert.remove(), 5000);
+    }
+
+    // Event Listeners
+    nextBtn.addEventListener('click', function() {
         if (currentStep === totalSteps) {
-            // Handle form submission
             handleSubmission();
-        } else {
+        } else if (validateStep(currentStep)) {
             currentStep++;
             updateProgress();
-
-            if (currentStep === 4) {
-                calculateShippingCost();
+            if (currentStep === totalSteps) {
+                calculatePrice();
             }
         }
     });
@@ -103,88 +227,4 @@ document.addEventListener('DOMContentLoaded', function() {
             updateProgress();
         }
     });
-
-    // Handle form input changes for real-time validation
-    form.addEventListener('input', function(e) {
-        if (e.target.hasAttribute('required')) {
-            if (e.target.value) {
-                e.target.classList.remove('is-invalid');
-            }
-        }
-
-        // Recalculate shipping cost when package details change
-        if (currentStep === 4) {
-            calculateShippingCost();
-        }
-    });
-
-    function handleSubmission() {
-        // Simulate form submission
-        const formData = new FormData(form);
-        const shipmentData = Object.fromEntries(formData.entries());
-        
-        // Show loading state
-        nextBtn.disabled = true;
-        nextBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Processing...';
-
-        // Simulate API call
-        setTimeout(() => {
-            // Create success modal
-            const modalHtml = `
-                <div class="modal fade" id="successModal" tabindex="-1">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Shipment Confirmed</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="text-center mb-4">
-                                    <div class="text-success mb-3">
-                                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                        </svg>
-                                    </div>
-                                    <h4>Thank You!</h4>
-                                    <p>Your shipment has been confirmed and will be processed shortly.</p>
-                                </div>
-                                <div class="alert alert-info">
-                                    <strong>Tracking Number:</strong> 
-                                    <span id="trackingNumber">DHL${Math.random().toString(36).substr(2, 9).toUpperCase()}</span>
-                                </div>
-                                <p class="mb-0">You will receive a confirmation email with shipping details and tracking information.</p>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="/tracking/track" class="btn btn-primary">Track Shipment</a>
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-
-            // Add modal to document
-            document.body.insertAdjacentHTML('beforeend', modalHtml);
-
-            // Show success modal
-            const successModal = new bootstrap.Modal(document.getElementById('successModal'));
-            successModal.show();
-
-            // Reset form and button state
-            nextBtn.disabled = false;
-            nextBtn.textContent = 'Submit';
-            
-            // Reset form after modal is closed
-            document.getElementById('successModal').addEventListener('hidden.bs.modal', function() {
-                form.reset();
-                currentStep = 1;
-                updateProgress();
-                this.remove();
-            });
-        }, 2000);
-    }
-
-    // Initialize progress
-    updateProgress();
 });

@@ -2,7 +2,7 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{{ url_for('support.static', filename='css/support-script.css') }}">
-{% endblock %}shipping
+{% endblock %}
 
 {% block extra_js %}
 <script src="{{ url_for('support.static', filename='js/support-script.js') }}"></script>
@@ -30,7 +30,7 @@
         <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
             <!-- Card 1: Get a Quote -->
             <div class="col mb-4">
-                <div class="card shadow-sm" style="width: 18rem;" onclick="window.location.href='{{ url_for('shipping.quote') }}'">
+                <div class="card shadow-sm" style="width: 18rem;" onclick="window.location.href='{{ url_for('shipping.quote') }}';">
                     <img src="{{ url_for('support.static', filename='images/dollar.png') }}" class="card-img-top small-img" alt="Get a Quote">
                     <div class="card-body">
                         <h5 class="card-title text-center">Get a Quote</h5>

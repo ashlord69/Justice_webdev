@@ -39,7 +39,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('shipping.quote') }}">Get a Quote</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('tracking.track') }}">Track</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('shipping.shipping') }}">Ship To</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('user.login', next=url_for('shipping.shipping')) }}">Ship To</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('main.homepage') }}#services-section">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('support.customer_service') }}">Contact Us</a></li>
                 </ul>
@@ -110,7 +110,7 @@
     <div class="footer-links">
         <a href="{{ url_for('admin.terms') }}">Terms of Use</a>
         <a href="#">Sitemap</a>
-        <a href="{{ url_for('admin.policies') }}#cookies">Cookie Policy</a>
+        <a href="{{ url_for('admin.policies')}}#cookies">Cookie Policy</a>
         <a href="{{ url_for('admin.policies') }}#policy-content">Privacy Policy</a>
         <a href="{{ url_for('admin.terms') }}">Shipping Terms & Conditions</a>
     </div>
