@@ -480,7 +480,7 @@ class Quote:
                 {'$match': {'type': {'$ne': 'base_rates'}}},
                 {'$sort': {'created_at': -1}}
             ]
-            
+            # TODO This causes an error. filter must be an instance of dict, bson.son.SON, or any other type that inherits from collections.Mapping
             quotes = list(self.collection.find(pipeline))
             
             # Process quotes for display
