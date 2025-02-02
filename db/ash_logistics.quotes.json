@@ -1,0 +1,221 @@
+[{
+  "_id": {
+    "$oid": "679f6700830c850f1ce70aab"
+  },
+  "type": "base_rates",
+  "express": {
+    "base": 50,
+    "per_kg": 10,
+    "days": "1-2"
+  },
+  "economy": {
+    "base": 30,
+    "per_kg": 7,
+    "days": "3-5"
+  },
+  "standard": {
+    "base": 20,
+    "per_kg": 5,
+    "days": "5-7"
+  }
+},
+{
+  "_id": {
+    "$oid": "679f6701830c850f1ce70aac"
+  },
+  "package_details": {
+    "weight": 3,
+    "dimensions": {
+      "length": 7,
+      "width": 7,
+      "height": 6
+    },
+    "from_country": "US",
+    "to_country": "US",
+    "shipping_date": {
+      "$date": "2025-02-25T00:00:00.000Z"
+    }
+  },
+  "quotes": [
+    {
+      "service": "express",
+      "price": 80,
+      "delivery_days": "1-2",
+      "estimated_delivery": {
+        "min": "Feb 26",
+        "max": "Feb 27"
+      }
+    },
+    {
+      "service": "economy",
+      "price": 51,
+      "delivery_days": "3-5",
+      "estimated_delivery": {
+        "min": "Feb 28",
+        "max": "Mar 02"
+      }
+    },
+    {
+      "service": "standard",
+      "price": 35,
+      "delivery_days": "5-7",
+      "estimated_delivery": {
+        "min": "Mar 02",
+        "max": "Mar 04"
+      }
+    }
+  ],
+  "created_at": {
+    "$date": "2025-02-02T12:37:21.004Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "679f670c830c850f1ce70aad"
+  },
+  "package_details": {
+    "weight": 3,
+    "dimensions": {
+      "length": 7,
+      "width": 7,
+      "height": 6
+    },
+    "from_country": "US",
+    "to_country": "US",
+    "shipping_date": {
+      "$date": "2025-02-25T00:00:00.000Z"
+    }
+  },
+  "quotes": [
+    {
+      "service": "express",
+      "price": 80,
+      "delivery_days": "1-2",
+      "estimated_delivery": {
+        "min": "Feb 26",
+        "max": "Feb 27"
+      }
+    },
+    {
+      "service": "economy",
+      "price": 51,
+      "delivery_days": "3-5",
+      "estimated_delivery": {
+        "min": "Feb 28",
+        "max": "Mar 02"
+      }
+    },
+    {
+      "service": "standard",
+      "price": 35,
+      "delivery_days": "5-7",
+      "estimated_delivery": {
+        "min": "Mar 02",
+        "max": "Mar 04"
+      }
+    }
+  ],
+  "created_at": {
+    "$date": "2025-02-02T12:37:32.660Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "679f6d6f1d9893bb46632270"
+  },
+  "package_details": {
+    "weight": 1,
+    "dimensions": {
+      "length": 2,
+      "width": 3,
+      "height": 4
+    },
+    "from_country": "US",
+    "to_country": "UK",
+    "shipping_date": {
+      "$date": "2025-02-09T00:00:00.000Z"
+    }
+  },
+  "quotes": [
+    {
+      "service": "express",
+      "price": 66,
+      "delivery_days": "1-2",
+      "estimated_delivery": {
+        "min": "Feb 10",
+        "max": "Feb 11"
+      }
+    },
+    {
+      "service": "economy",
+      "price": 40.7,
+      "delivery_days": "3-5",
+      "estimated_delivery": {
+        "min": "Feb 12",
+        "max": "Feb 14"
+      }
+    },
+    {
+      "service": "standard",
+      "price": 27.5,
+      "delivery_days": "5-7",
+      "estimated_delivery": {
+        "min": "Feb 14",
+        "max": "Feb 16"
+      }
+    }
+  ],
+  "created_at": {
+    "$date": "2025-02-02T13:04:47.453Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "679f6d791d9893bb46632271"
+  },
+  "package_details": {
+    "weight": 1,
+    "dimensions": {
+      "length": 2,
+      "width": 3,
+      "height": 4
+    },
+    "from_country": "US",
+    "to_country": "UK",
+    "shipping_date": {
+      "$date": "2025-02-09T00:00:00.000Z"
+    }
+  },
+  "quotes": [
+    {
+      "service": "express",
+      "price": 66,
+      "delivery_days": "1-2",
+      "estimated_delivery": {
+        "min": "Feb 10",
+        "max": "Feb 11"
+      }
+    },
+    {
+      "service": "economy",
+      "price": 40.7,
+      "delivery_days": "3-5",
+      "estimated_delivery": {
+        "min": "Feb 12",
+        "max": "Feb 14"
+      }
+    },
+    {
+      "service": "standard",
+      "price": 27.5,
+      "delivery_days": "5-7",
+      "estimated_delivery": {
+        "min": "Feb 14",
+        "max": "Feb 16"
+      }
+    }
+  ],
+  "created_at": {
+    "$date": "2025-02-02T13:04:57.576Z"
+  }
+}]

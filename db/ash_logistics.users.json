@@ -1,0 +1,15 @@
+[{
+  "_id": {
+    "$oid": "679f6aa479756965daffd1a6"
+  },
+  "email": "test@test.com",
+  "full_name": "Test Test",
+  "password": "$2b$12$owHuKtW05w54eU9yRfTP6usRAj2NHLsHiSY8woDOMGuNV./AKbD2W",
+  "created_at": {
+    "$date": "2025-02-02T12:52:44.844Z"
+  },
+  "last_login": null,
+  "phone_number": "",
+  "address": "",
+  "company": ""
+}]
