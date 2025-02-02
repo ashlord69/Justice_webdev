@@ -18,9 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
 //   });
 
   // Show login form
-  loginBtn.addEventListener("click", () => {
-    container.classList.remove("active");
-  });
+//   loginBtn.addEventListener("click", () => {
+//     container.classList.remove("active");
+//   });
 
   // Show Alert
   function showAlert(elementId, message, type) {
