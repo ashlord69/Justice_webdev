@@ -471,48 +471,48 @@ class Quote:
 
 #DASHBOARD MODELS
 
-# Update the get_dashboard_data method in the Quote class
-def get_dashboard_data(self):
-    """Get all quotes data for dashboard display"""
-    try:
-        # Find all quotes except base rates, sorted by creation date
-        pipeline = [
-            {'$match': {'type': {'$ne': 'base_rates'}}},
-            {'$sort': {'created_at': -1}}
-        ]
-        
-        quotes = list(self.collection.find(pipeline))
-        
-        # Process quotes for display
-        processed_quotes = []
-        for quote in quotes:
-            # Convert ObjectId to string
-            quote['_id'] = str(quote['_id'])
+    # Update the get_dashboard_data method in the Quote class
+    def get_dashboard_data(self):
+        """Get all quotes data for dashboard display"""
+        try:
+            # Find all quotes except base rates, sorted by creation date
+            pipeline = [
+                {'$match': {'type': {'$ne': 'base_rates'}}},
+                {'$sort': {'created_at': -1}}
+            ]
             
-            # Format dates
-            if 'created_at' in quote:
-                quote['created_at'] = quote['created_at'].strftime('%Y-%m-%d %H:%M:%S')
+            quotes = list(self.collection.find(pipeline))
             
-            if 'package_details' in quote and 'shipping_date' in quote['package_details']:
-                quote['package_details']['shipping_date'] = quote['package_details']['shipping_date'].strftime('%Y-%m-%d')
+            # Process quotes for display
+            processed_quotes = []
+            for quote in quotes:
+                # Convert ObjectId to string
+                quote['_id'] = str(quote['_id'])
+                
+                # Format dates
+                if 'created_at' in quote:
+                    quote['created_at'] = quote['created_at'].strftime('%Y-%m-%d %H:%M:%S')
+                
+                if 'package_details' in quote and 'shipping_date' in quote['package_details']:
+                    quote['package_details']['shipping_date'] = quote['package_details']['shipping_date'].strftime('%Y-%m-%d')
+                
+                processed_quotes.append(quote)
             
-            processed_quotes.append(quote)
-        
-        # Calculate statistics
-        total_quotes = len(processed_quotes)
-        international_quotes = sum(1 for q in processed_quotes if 
-            q.get('package_details', {}).get('from_country') != 
-            q.get('package_details', {}).get('to_country'))
-        domestic_quotes = total_quotes - international_quotes
-        
-        return {
-            'quotes': processed_quotes,
-            'stats': {
-                'total_quotes': total_quotes,
-                'international_quotes': international_quotes,
-                'domestic_quotes': domestic_quotes
+            # Calculate statistics
+            total_quotes = len(processed_quotes)
+            international_quotes = sum(1 for q in processed_quotes if 
+                q.get('package_details', {}).get('from_country') != 
+                q.get('package_details', {}).get('to_country'))
+            domestic_quotes = total_quotes - international_quotes
+            
+            return {
+                'quotes': processed_quotes,
+                'stats': {
+                    'total_quotes': total_quotes,
+                    'international_quotes': international_quotes,
+                    'domestic_quotes': domestic_quotes
+                }
             }
-        }
-    except Exception as e:
-        print(f"Error fetching dashboard data: {e}")
-        return {'quotes': [], 'stats': {'total_quotes': 0, 'international_quotes': 0, 'domestic_quotes': 0}}
+        except Exception as e:
+            print(f"Error fetching dashboard data: {e}")
+            return {'quotes': [], 'stats': {'total_quotes': 0, 'international_quotes': 0, 'domestic_quotes': 0}}
