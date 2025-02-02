@@ -1,20 +1,21 @@
 document.addEventListener("DOMContentLoaded", function () {
   const container = document.getElementById("login-container");
-  const registerBtn = document.getElementById("register");
+//   const registerBtn = document.getElementById("register");
   const loginBtn = document.getElementById("login");
-  const verificationModal = new bootstrap.Modal(
-    document.getElementById("verificationModal"),
-    {
-      backdrop: "static",
-      keyboard: false,
-    }
-  );
+  // TODO When I open http://127.0.0.1:5000/user/login it fails at this line so I can't log in
+//   const verificationModal = new bootstrap.Modal(
+//     document.getElementById("verificationModal"),
+//     {
+//       backdrop: "static",
+//       keyboard: false,
+//     }
+//   );
   let currentEmail = "";
 
   // Show registration form
-  registerBtn.addEventListener("click", () => {
-    container.classList.add("active");
-  });
+//   registerBtn.addEventListener("click", () => {
+//     container.classList.add("active");
+//   });
 
   // Show login form
   loginBtn.addEventListener("click", () => {
@@ -91,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       currentEmail = email;
-      verificationModal.show();
+    //   verificationModal.show();
     } catch (error) {
       showAlert("registerAlert", error.message, "error");
     }
@@ -117,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       showAlert("verificationAlert", data.message, "success");
-      verificationModal.hide();
+    //   verificationModal.hide();
     } catch (error) {
       showAlert("verificationAlert", error.message, "error");
     }
